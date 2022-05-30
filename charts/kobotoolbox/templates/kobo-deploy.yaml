@@ -93,6 +93,11 @@ spec:
         # Kobocat is the forms API server that Enketo / Collect will connect to
         - name: kobocat
           image: "{{ .Values.kobocat.image.name }}:{{ .Values.kobocat.image.tag }}"
+          resources:
+            requests:
+              memory: {{ .Values.kobocat.memory.requested }}
+            limits:
+              memory: {{ .Values.kobocat.memory.limit }}
           terminationMessagePolicy: FallbackToLogsOnError
           # command:
           # - sh
@@ -155,6 +160,11 @@ spec:
         # KPI is the main User Interface and admin API
         - name: kpi
           image: "{{ .Values.kpi.image.name }}:{{ .Values.kpi.image.tag }}"
+          resources:
+            requests:
+              memory: {{ .Values.kpi.memory.requested }}
+            limits:
+              memory: {{ .Values.kpi.memory.limit }}
           terminationMessagePolicy: FallbackToLogsOnError
           # Override entrypoint to redirect logs to stdout
           # command:

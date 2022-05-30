@@ -12,7 +12,9 @@ kobocat:
   subdomain: kc
   # -- Dictionary of env variables to pass
   extraEnv: {}
-
+  memory:
+    requested: 2.0Gi
+    limit: 3.0Gi
 kpi:
   image:
     # -- kpi docker image name
@@ -26,7 +28,9 @@ kpi:
   extraEnv:
     DJANGO_LANGUAGE_CODES: en fr es ar zh-hans hi ku
     KOBO_SUPPORT_URL: http://support.kobotoolbox.org/
-
+  memory:
+    requested: 2.0Gi
+    limit: 3.0Gi
 enketo:
   image:
     # -- Enketo image name - the web-based form preview and filling UI
