@@ -402,11 +402,11 @@ redis://:{{ urlquery .Values.global.redis.password }}@{{ .Release.Name }}-redism
 - name: {{ . }}_UWSGI_MAX_REQUESTS
   value: '512'
 - name: {{ . }}_UWSGI_WORKERS_COUNT
-  value: '2'
+  value: {{ .Values.uwsgi.workers | quote }}
 - name: {{ . }}_UWSGI_CHEAPER_RSS_LIMIT_SOFT
-  value: '134217728'
+  value: {{ .Values.uwsgi.cheaper-rss-limit-soft | quote }}
 - name: {{ . }}_UWSGI_CHEAPER_WORKERS_COUNT
-  value: '1'
+  value: {{ .Values.uwsgi.cheaper | quote }}
 - name: {{ . }}_UWSGI_HARAKIRI
   value: '120'
 - name: {{ . }}_UWSGI_WORKER_RELOAD_MERCY
