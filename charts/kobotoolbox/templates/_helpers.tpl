@@ -547,5 +547,12 @@ server {
     uwsgi_buffers 8 16k;
     uwsgi_buffer_size 16k;
   }
+
+  # media files
+  location /protected/ {
+    internal;
+    alias /media/;
+  }
+
 }
 {{- end -}}
