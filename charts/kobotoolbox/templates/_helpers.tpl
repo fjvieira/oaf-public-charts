@@ -399,17 +399,19 @@ redis://:{{ urlquery .Values.global.redis.password }}@{{ .Release.Name }}-redism
 {{- end -}}
 
 {{- define "env_uwsgi" -}}
-- name: {{ . }}_UWSGI_MAX_REQUESTS
+{{- $root := index . 0 -}}
+{{- $prefix := index . 1 -}}
+- name: {{ $prefix }}_UWSGI_MAX_REQUESTS
   value: '512'
-- name: {{ . }}_UWSGI_WORKERS_COUNT
-  value: {{ .Values.uwsgi.workers | quote }}
-- name: {{ . }}_UWSGI_CHEAPER_RSS_LIMIT_SOFT
-  value: {{ .Values.uwsgi.cheaper-rss-limit-soft | quote }}
-- name: {{ . }}_UWSGI_CHEAPER_WORKERS_COUNT
-  value: {{ .Values.uwsgi.cheaper | quote }}
-- name: {{ . }}_UWSGI_HARAKIRI
+- name: {{ $prefix }}_UWSGI_WORKERS_COUNT
+  value: {{ $root.Values.uwsgi.workers | quote }}
+- name: {{ $prefix }}_UWSGI_CHEAPER_RSS_LIMIT_SOFT
+  value: {{ $root.Values.uwsgi.cheaperRssLimitSoft | quote }}
+- name: {{ $prefix }}_UWSGI_CHEAPER_WORKERS_COUNT
+  value: {{ $root.Values.uwsgi.cheaper | quote }}
+- name: {{ $prefix }}_UWSGI_HARAKIRI
   value: '120'
-- name: {{ . }}_UWSGI_WORKER_RELOAD_MERCY
+- name: {{ $prefix }}_UWSGI_WORKER_RELOAD_MERCY
   value: '120'
 # - name: UWSGI_GROUP
 #   value: wsgi

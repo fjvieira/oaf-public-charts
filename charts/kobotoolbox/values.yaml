@@ -15,6 +15,7 @@ kobocat:
   memory:
     requested: 2.0Gi
     limit: 3.0Gi
+
 kpi:
   image:
     # -- kpi docker image name
@@ -31,10 +32,12 @@ kpi:
   memory:
     requested: 2.0Gi
     limit: 3.0Gi
+
 uwsgi:
-  workers: 4
-  cheaper: 2
-  cheaper-rss-limit-soft: 1073741824
+  workers: "4"
+  cheaper: "2"
+  cheaperRssLimitSoft: "1073741824"
+
 enketo:
   image:
     # -- Enketo image name - the web-based form preview and filling UI

@@ -112,7 +112,7 @@ spec:
             {{- include "env_redis" . | nindent 12 }}
             {{- include "env_externals" . | nindent 12 }}
             {{- include "env_kobocat" . | nindent 12 }}
-            {{- include "env_uwsgi" "KC" | nindent 12 }}
+            {{- include "env_uwsgi" (list . "KC") | nindent 12 }}
             {{- include "env_smtp" . | nindent 12 }}
             - name: ENKETO_PROTOCOL
               value: http
@@ -185,7 +185,7 @@ spec:
             {{- include "env_redis" . | nindent 12 }}
             {{- include "env_externals" . | nindent 12 }}
             {{- include "env_kpi" . | nindent 12 }}
-            {{- include "env_uwsgi" "KPI" | nindent 12 }}
+            {{- include "env_uwsgi"  (list . "KPI") | nindent 12 }}
             {{- include "env_smtp" . | nindent 12 }}
             - name: SYNC_KOBOCAT_XFORMS
               value: 'True'
