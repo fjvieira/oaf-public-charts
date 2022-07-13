@@ -15,7 +15,7 @@ spec:
         # Add a checksum to force the re-creation of the pods on every config update
         # TODO: better checksum?
         checksum/config: {{ .Values | toString | sha256sum }}
-        checksum/nginx_conf: {{ include "nginx_conf" . | sha256sum }}
+        checksum/nginx_conf: {{ .Values.nginx.config | toString | sha256sum }}
         co.elastic.logs/enabled: "true"
       labels:
         org.kobotoolbox.instance: {{ .Release.Name }}-kobo

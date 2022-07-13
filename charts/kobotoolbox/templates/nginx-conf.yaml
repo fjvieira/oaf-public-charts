@@ -4,5 +4,5 @@ metadata:
   name: {{ .Release.Name }}-nginx-confd
   namespace: {{ .Release.Namespace }}
 data:
-  default.conf: |
-    {{- include "nginx_conf" .  | nindent 4 }}
+  default.conf: |-
+    {{- tpl .Values.nginx.config . | nindent 4 }}
